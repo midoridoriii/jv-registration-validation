@@ -1,13 +1,18 @@
 package core.basesyntax.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import core.basesyntax.dao.StorageDao;
 import core.basesyntax.dao.StorageDaoImpl;
 import core.basesyntax.db.Storage;
 import core.basesyntax.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class RegistrationServiceImplTest {
     private RegistrationService registrationService;
@@ -56,7 +61,7 @@ public class RegistrationServiceImplTest {
 
     @Test
     void ageLessThan18_NotOk() {
-        User actual =  new User("123456", "123456", 15);
+        User actual = new User("123456", "123456", 15);
         assertThrows(RegistrationException.class,
                 () -> registrationService.register(actual));
     }

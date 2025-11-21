@@ -5,9 +5,9 @@ import core.basesyntax.dao.StorageDaoImpl;
 import core.basesyntax.model.User;
 
 public class RegistrationServiceImpl implements RegistrationService {
-    private final StorageDao storageDao = new StorageDaoImpl();
     private static final int MIN_VALUE = 6;
     private static final int MIN_AGE = 18;
+    private final StorageDao storageDao = new StorageDaoImpl();
 
     @Override
     public User register(User user) {
@@ -17,7 +17,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (user.getLogin() == null || user.getLogin().length() < MIN_VALUE) {
             throw new RegistrationException("Login length must be greater than 6!");
         }
-        if (user.getPassword() == null || user.getPassword().length() < MIN_VALUE ) {
+        if (user.getPassword() == null || user.getPassword().length() < MIN_VALUE) {
             throw new RegistrationException("Password length must be greater than 6!");
         }
         if (user.getAge() == null || user.getAge() < MIN_AGE) {
